@@ -16,7 +16,7 @@ const DEFAULT_COLORS = [
   #FFB28C, 
   #BCEDAF, 
   #DBE6F7, 
-  #FFD9B2
+  #FFD9B2,
 ];
 
 looker.plugins.visualizations.add({
