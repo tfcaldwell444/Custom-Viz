@@ -53,7 +53,7 @@ looker.plugins.visualizations.add({
     const dimension = dimensions[0], measure = measures[0];
     const innerPercent = Math.min(90, Math.max(20, Number(config.inner_radius) || 70));
     const innerRadius = (OUTER_RADIUS * innerPercent) / 100;
-    const result = buildSlices(data || [], dimension.name, measure.name, getPaletteColors(config.palette_mode));
+    const result = buildSlices(data || [], dimension.name, measure.name, getPaletteColors(config));
     if (!result.slices.length) { this.addError({ title: "No positive values to chart", message: `${measure.label_short || measure.label || measure.name} has no values greater than zero.` }); this._chartEl.innerHTML = ""; this._legendEl.innerHTML = ""; doneRendering(); return; }
     const sliceMarkup = result.slices.length === 1 ? fullRingMarkup(result.slices[0], innerRadius) : result.slices.map(slice => `<path class="dct-slice" d="${ringSegmentPath(slice.startAngle, slice.endAngle, innerRadius)}" fill="${escapeAttr(slice.color)}" data-row="${slice.rowIndex}"><title>${escapeHtml(slice.tooltip)}</title></path>`).join("");
     const labelMarkup = config.show_slice_percentages === false ? "" : result.slices.map(sliceLabelMarkup).join("");
@@ -66,7 +66,14 @@ looker.plugins.visualizations.add({
   }
 });
 
-function getPaletteColors(mode) { return PALETTES[mode] || PALETTES.classic; }
+function getPaletteColors(config) {
+  // If the user selects a palette in the new color picker, it returns an array of hex codes
+  if (config.custom_colors && config.custom_colors.length > 0) {
+    return config.custom_colors;
+  }
+  // Fallback to your hardcoded palettes if nothing is selected
+  return PALETTES[config.palette_mode] || PALETTES.classic;
+}
 function buildSlices(data, dimensionName, measureName, colors) { const rows = data.map((row, rowIndex) => { const dimCell = row[dimensionName] || {}, measureCell = row[measureName] || {}, value = Number(measureCell.value); return { rowIndex, label: String(dimCell.rendered ?? dimCell.value ?? ""), value, links: dimCell.links || measureCell.links || [] }; }).filter(row => Number.isFinite(row.value) && row.value > 0); const total = rows.reduce((sum, row) => sum + row.value, 0); let angle = -Math.PI / 2; const slices = rows.map((row, index) => { const endAngle = angle + row.value / total * Math.PI * 2; const slice = { ...row, color: String(colors[index % colors.length]), startAngle: angle, endAngle, percent: row.value / total * 100, tooltip: `${row.label}: ${row.value}` }; angle = endAngle; return slice; }); return { slices, total }; }
 function point(radius, angle) { return { x: CENTER + radius * Math.cos(angle), y: CENTER + radius * Math.sin(angle) }; }
 function ringSegmentPath(start, end, innerRadius) { const outerStart = point(OUTER_RADIUS, start), outerEnd = point(OUTER_RADIUS, end), innerEnd = point(innerRadius, end), innerStart = point(innerRadius, start), large = end - start > Math.PI ? 1 : 0; return `M${outerStart.x} ${outerStart.y} A${OUTER_RADIUS} ${OUTER_RADIUS} 0 ${large} 1 ${outerEnd.x} ${outerEnd.y} L${innerEnd.x} ${innerEnd.y} A${innerRadius} ${innerRadius} 0 ${large} 0 ${innerStart.x} ${innerStart.y} Z`; }
