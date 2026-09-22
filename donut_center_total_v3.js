@@ -87,8 +87,7 @@ const PALETTES = {
     "#BCEDAF", 
     "#DBE6F7", 
     "#FFD9B2",
-],
-
+  ],
 };
 
 looker.plugins.visualizations.add({
