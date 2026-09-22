@@ -1,6 +1,6 @@
 looker.plugins.visualizations.add({
-  id: "custom_donut_v4",
-  label: "Custom Donut v4",
+  id: "custom_donut_v2",
+  label: "Custom Donut v2",
 
   options: {
     chart_title: {
