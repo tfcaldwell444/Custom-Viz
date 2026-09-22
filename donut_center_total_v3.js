@@ -71,21 +71,21 @@ const PALETTES = {
     "#95D5B2",
     "#B7E4C7",
   ],
-  dexcom = [
-    "#32AD10", 
-    "#FFFFFF", 
-    "#F6F6F6", 
-    "#D9D8D6", 
-    "#434141", 
-    "#48762B", 
-    "#136232", 
-    "#558BDB", 
-    "#FF671D", 
-    "#61CC45", 
-    "#9DB9E6", 
-    "#FFB28C", 
-    "#BCEDAF", 
-    "#DBE6F7", 
+  dexcom: [
+    "#32AD10",
+    "#FFFFFF",
+    "#F6F6F6",
+    "#D9D8D6",
+    "#434141",
+    "#48762B",
+    "#136232",
+    "#558BDB",
+    "#FF671D",
+    "#61CC45",
+    "#9DB9E6",
+    "#FFB28C",
+    "#BCEDAF",
+    "#DBE6F7",
     "#FFD9B2",
   ],
 };
@@ -227,7 +227,7 @@ looker.plugins.visualizations.add({
     const innerPercent = Math.min(90, Math.max(20, Number(config.inner_radius) || 70));
     const innerRadius = (OUTER_RADIUS * innerPercent) / 100;
     const colors = getPaletteColors(config.palette_mode);
-    const result = buildSlices(data || [], dimension.name, measure.name, innerRadius, colors);
+    const result = buildSlices(data || [], dimension.name, measure.name, colors);
 
     if (!result.slices.length) {
       this.addError({
@@ -303,7 +303,7 @@ function getPaletteColors(mode) {
   return PALETTES[mode] || PALETTES.classic;
 }
 
-function buildSlices(data, dimensionName, measureName, innerRadius, colors) {
+function buildSlices(data, dimensionName, measureName, colors) {
   const rows = data
     .map((row, rowIndex) => {
       const dimCell = row[dimensionName] || {};
