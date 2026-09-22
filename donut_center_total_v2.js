@@ -2,14 +2,21 @@ const VIEW_SIZE = 300;
 const CENTER = VIEW_SIZE / 2;
 const OUTER_RADIUS = 112;
 const DEFAULT_COLORS = [
-  "#7c4ce0",
-  "#1298b8",
-  "#0aa84f",
-  "#d99a00",
-  "#c94398",
-  "#ef4444",
-  "#14b8a6",
-  "#6366f1",
+  #32AD10, 
+  #FFFFFF, 
+  #F6F6F6, 
+  #D9D8D6, 
+  #434141, 
+  #48762B, 
+  #136232, 
+  #558BDB, 
+  #FF671D, 
+  #61CC45, 
+  #9DB9E6, 
+  #FFB28C, 
+  #BCEDAF, 
+  #DBE6F7, 
+  #FFD9B2
 ];
 
 looker.plugins.visualizations.add({
