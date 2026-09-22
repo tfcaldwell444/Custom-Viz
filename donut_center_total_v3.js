@@ -23,11 +23,11 @@ looker.plugins.visualizations.add({
       section: "Style",
       order: 2,
       values: [
-        { label: "Dexcom", value: "dexcom" },
-        { label: "Classic", value: "classic" },
-        { label: "Ocean", value: "ocean" },
-        { label: "Warm", value: "warm" },
-        { label: "Forest", value: "forest" }
+        { "Dexcom": "dexcom" },
+        { "Classic": "classic" },
+        { "Ocean": "ocean" },
+        { "Warm": "warm" },
+        { "Forest": "forest" }
       ]
     },
     show_slice_percentages: { type: "boolean", label: "Percentage on slices", default: true, section: "Style", order: 3 },
