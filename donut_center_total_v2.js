@@ -106,10 +106,11 @@ looker.plugins.visualizations.add({
     palette_mode: {
       type: "enum",
       label: "Color palette",
-      default: "classic",
+      default: "dexcom",
       section: "Style",
       order: 2,
       values: [
+        { Dexcom: "dexcom" },
         { Classic: "classic" },
         { Ocean: "ocean" },
         { Warm: "warm" },
