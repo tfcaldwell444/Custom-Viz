@@ -7,7 +7,7 @@ const PALETTES = {
   ocean: ["#1D3557", "#457B9D", "#A8DADC", "#E63946", "#F1FAEE", "#2A9D8F", "#264653", "#7EC8E3", "#90E0EF", "#F4A261", "#2D6A4F", "#4CC9F0", "#BDE0FE", "#CDB4DB", "#FFC8DD"],
   warm: ["#F94144", "#F3722C", "#F8961E", "#F9C74F", "#90BE6D", "#577590", "#E76F51", "#FFB703", "#FB8500", "#A3B18A", "#E9C46A", "#F4A261", "#2A9D8F", "#7F5539", "#D4A373"],
   forest: ["#1B4332", "#2D6A4F", "#40916C", "#74C69D", "#95D5B2", "#B7E4C7", "#D8F3DC", "#081C15", "#52B788", "#40916C", "#2D6A4F", "#1B4332", "#74C69D", "#95D5B2", "#B7E4C7"],
-  dexcom: ["#32AD10", "#FFFFFF", "#F6F6F6", "#D9D8D6", "#434141", "#48762B", "#136232", "#558BDB", "#FF671D", "#61CC45", "#9DB9E6", "#FFB28C", "#BCEDAF", "#DBE6F7", "#FFD9B2"]
+  dexcom: ["#32AD10", "#434141", "#D9D8D6", "#FFFFFF", "#F6F6F6", "#48762B", "#136232", "#558BDB", "#FF671D", "#61CC45", "#9DB9E6", "#FFB28C", "#BCEDAF", "#DBE6F7", "#FFD9B2"]
 };
 
 looker.plugins.visualizations.add({
